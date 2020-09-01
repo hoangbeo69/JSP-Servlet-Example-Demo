@@ -17,8 +17,7 @@ public class HomeController extends HttpServlet {
         throws ServletException, IOException{
         UserModel user = new UserModel();
         user.setFullName("Hell everyone");
-
-        request.setAttribute("model",user);
+        request.setAttribute("model",user); //đặt tên đối tượng này là model để các file JSP có thể gọi
         RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
         rd.forward(request,response);
     }
