@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Thiết lập phiên bản,đường đẫn cơ bản -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com</groupId>
+    <artifactId>servlet-jsp-jdbc-learn</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <!--thiết lập môi trường chạy là java 11.0.7-->
+    <properties>
+        <jsp.api.version>2.0</jsp.api.version>
+        <servlet.api.version>4.0.1</servlet.api.version>
+        <jstl.version>1.2</jstl.version>
+        <maven.compiler.release>11</maven.compiler.release>
+    </properties>
+    <!--thiết lập môi trường chạy là java 11.0.7-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <release>11</release>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <!-- Thêm các thư viện vào chương trình -->
+    <dependencies>
+        <!--Thêm thư viện JSP API-->
+        <!-- https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>${jsp.api.version}</version>
+        </dependency>
+        <!-- Thư viện Servlet API -->
+        <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${servlet.api.version}</version>
+        </dependency>
+        <!-- Thư viện JSTL API -->
+        <!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl-api -->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
+        </dependency>
+    </dependencies>
+</project>
