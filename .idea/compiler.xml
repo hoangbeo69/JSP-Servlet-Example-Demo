@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="JSP-Servlet-Example-Demo" />
         <module name="JSP-Servlet-JDBC" />
       </profile>
     </annotationProcessing>

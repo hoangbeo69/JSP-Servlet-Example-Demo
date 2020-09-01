@@ -1,5 +1,7 @@
 package com.jspservletjdbc.controller.web;
 
+import com.jspservletjdbc.model.UserModel;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +15,10 @@ import java.io.IOException;
 public class HomeController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException{
+        UserModel user = new UserModel();
+        user.setFullName("Hell everyone");
+
+        request.setAttribute("model",user);
         RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
         rd.forward(request,response);
     }
