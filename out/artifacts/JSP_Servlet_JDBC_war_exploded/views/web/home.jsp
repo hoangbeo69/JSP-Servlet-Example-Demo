@@ -7,7 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <%@include file="/common/taglib.jsp"%>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
     <title>Trang Chủ</title>
     <meta http-equiv="Content-Type"content="text/html;charset = UTF-8">

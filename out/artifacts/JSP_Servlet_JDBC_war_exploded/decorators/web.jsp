@@ -11,7 +11,7 @@
 <html lang="en">
 <head>
     <%--    nếu trang nào không định nghĩa title thì lấy tên là trang chủ--%>
-    <title><dec:title default="Trang Chủ"></title>
+    <title><dec:title default="Trang Chủ"></dec:title></title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,7 +19,7 @@
     <!-- Bootstrap CSS -->
     <link href="<c:url value="/template/web/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="<c:url value="/webapp/template/web/css/style.css" />" rel="stylesheet">
+    <link href="<c:url value="/template/web/css/style.css" />" rel="stylesheet">
 </head>
 <body>
     <%--    header--%>

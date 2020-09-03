@@ -28,14 +28,24 @@
     <%@include file="/common/admin/header.jsp"%>
     <%--    Header--%>
 
-    <div class="container">
-        <dec:body></dec:body>
-    </div>
+    <div class="main-container" id="main-container">
+        <script type="text/javascript">
+            try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+        </script>
+        <!-- menu left -->
+        <%@ include file="/common/admin/menu.jsp" %>
+        <!-- menu left -->
 
-    <%--    Footer--%>
-    <%@include file="/common/admin/footer.jsp"%>
-    <%--    Footer--%>
-    
+        <dec:body/>
+
+        <!-- footer -->
+        <%@ include file="/common/admin/footer.jsp" %>
+        <!-- footer -->
+
+        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse display">
+            <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+        </a>
+    </div>
 
 
 <script src="<c:url value='/template/admin/assets/js/bootstrap.min.js' />"></script>
