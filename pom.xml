@@ -16,6 +16,7 @@
         <sitemesh.version>2.4.2</sitemesh.version>
         <maven.compiler.release>11</maven.compiler.release>
         <mysql.version>8.0.16</mysql.version>
+        <weld.servlet.version>3.1.0.Final</weld.servlet.version>
     </properties>
     <!--thiết lập môi trường chạy là java 11.0.7-->
     <build>
@@ -66,6 +67,12 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jboss.weld.servlet/weld-servlet-core -->
+        <dependency>
+            <groupId>org.jboss.weld.servlet</groupId>
+            <artifactId>weld-servlet-core</artifactId>
+            <version>${weld.servlet.version}</version>
         </dependency>
 
 
