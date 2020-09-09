@@ -15,6 +15,7 @@
         <jstl.version>1.2</jstl.version>
         <sitemesh.version>2.4.2</sitemesh.version>
         <maven.compiler.release>11</maven.compiler.release>
+        <mysql.version>8.0.16</mysql.version>
     </properties>
     <!--thiết lập môi trường chạy là java 11.0.7-->
     <build>
@@ -59,6 +60,14 @@
             <artifactId>sitemesh</artifactId>
             <version>${sitemesh.version}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+
 
     </dependencies>
 </project>
