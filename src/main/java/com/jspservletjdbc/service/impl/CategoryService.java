@@ -1,7 +1,6 @@
 package com.jspservletjdbc.service.impl;
 
 import com.jspservletjdbc.dao.ICategoryDAO;
-import com.jspservletjdbc.dao.impl.CategoryDAO;
 import com.jspservletjdbc.model.CategoryModel;
 import com.jspservletjdbc.service.ICategoryService;
 

@@ -3,7 +3,6 @@ package com.jspservletjdbc.dao.impl;
 import com.jspservletjdbc.dao.ICategoryDAO;
 import com.jspservletjdbc.model.CategoryModel;
 
-import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
