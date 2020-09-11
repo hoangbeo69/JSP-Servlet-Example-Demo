@@ -8,9 +8,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewsDao implements INewsDao {
+public class NewsDao extends AbstractDAO implements INewsDao {
 
-    public static Connection getConnection() {
+    public static Connection  getConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/jspservletjdbc_demo";

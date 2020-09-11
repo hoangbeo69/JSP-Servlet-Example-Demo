@@ -4,6 +4,6 @@ import com.jspservletjdbc.model.NewsModel;
 
 import java.util.List;
 
-public interface INewsDao {
+public interface INewsDao extends GenericDAO {
     List<NewsModel> findByCategoryId(Long categoryID);
 }

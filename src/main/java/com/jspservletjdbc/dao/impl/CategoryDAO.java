@@ -1,5 +1,6 @@
 package com.jspservletjdbc.dao.impl;
 
+import com.jspservletjdbc.dao.GenericDAO;
 import com.jspservletjdbc.dao.ICategoryDAO;
 import com.jspservletjdbc.model.CategoryModel;
 
@@ -7,7 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryDAO implements ICategoryDAO {
+public class CategoryDAO extends AbstractDAO<CategoryModel> implements ICategoryDAO{
     public static Connection getConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
