@@ -3,6 +3,7 @@ package com.jspservletjdbc.controller.admin.api;
 import com.jspservletjdbc.model.NewsModel;
 import com.jspservletjdbc.service.impl.NewsService;
 import com.jspservletjdbc.utils.HttpUtil;
+import org.codehaus.jackson.map.ObjectMapper;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -21,11 +22,13 @@ public class NewsAPI extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+        ObjectMapper mapper = new ObjectMapper();
         req.setCharacterEncoding("UTF-8"); //đinh dạng định dạng dữ liệu truyền vào có thể đọc tiếng việt
         resp.setContentType("application/json");  // set kiểu dữ liệu đầu ra là kiểu json
         NewsModel newsModel = HttpUtil.of(req.getReader()).toModel(NewsModel.class);
         newsModel = newsService.save(newsModel);
         System.out.println(newsModel);
+        mapper.writeValue(resp.getOutputStream(),newsModel);
     }
 //    @Override
 //    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
