@@ -27,4 +27,15 @@ public class NewsDao extends AbstractDAO implements INewsDao {
         return news.isEmpty() ? null : (NewsModel) news.get(0);
     }
 
+    @Override
+    public void update(NewsModel updateNew) {
+        StringBuilder sql = new StringBuilder("UPDATE news SET title = ?, thumbnail = ?,");
+        sql.append(" shortdescription = ?, content = ?, categoryid = ?,");
+        sql.append(" createddate = ?, createdby = ?, modifieddate = ?, modifiedby = ? WHERE id = ?");
+        update(sql.toString(), updateNew.getTitle(), updateNew.getThumbnail(), updateNew.getShortDescription(),
+                updateNew.getContent(), updateNew.getCategoryId(), updateNew.getCreateDate(),
+                updateNew.getCreatedBy(), updateNew.getModifiedDate(),
+                updateNew.getModifiedBy(), updateNew.getId());
+    }
+
 }

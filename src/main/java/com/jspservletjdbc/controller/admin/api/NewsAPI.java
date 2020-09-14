@@ -26,16 +26,23 @@ public class NewsAPI extends HttpServlet {
         req.setCharacterEncoding("UTF-8"); //đinh dạng định dạng dữ liệu truyền vào có thể đọc tiếng việt
         resp.setContentType("application/json");  // set kiểu dữ liệu đầu ra là kiểu json
         NewsModel newsModel = HttpUtil.of(req.getReader()).toModel(NewsModel.class);
+
         newsModel = newsService.save(newsModel);
-        System.out.println(newsModel);
         mapper.writeValue(resp.getOutputStream(),newsModel);
     }
-//    @Override
-//    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        super.doPut(req, resp);
-//
-//    }
-//
+
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        req.setCharacterEncoding("UTF-8");
+        resp.setContentType("application/json");
+        NewsModel updateNews = HttpUtil.of(req.getReader()).toModel(NewsModel.class);
+
+        updateNews = newsService.update(updateNews);
+        mapper.writeValue(resp.getOutputStream(),updateNews);
+    }
+
 //    @Override
 //    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        super.doDelete(req, resp);

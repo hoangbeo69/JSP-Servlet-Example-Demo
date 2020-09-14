@@ -72,8 +72,10 @@ public class AbstractDAO<T> implements GenericDAO<T> {
             connection.setAutoCommit(false);
             statement = connection.prepareStatement(sql);
             setParameter(statement,parameters);
+            statement.executeUpdate();
             connection.commit();
         }catch (SQLException e){
+            System.out.println(e);
             if (connection != null) {
                 try {
                     connection.rollback(); //nếu 1 trong các commit phía trên thì nó sẽ quay trở về như ban đầu khi chưa insert
@@ -155,6 +157,8 @@ public class AbstractDAO<T> implements GenericDAO<T> {
                     statement.setString(index, (String) parameter);
                 } else if (parameter instanceof Timestamp){
                     statement.setTimestamp(index,(Timestamp) parameter);
+                }else if(parameter == null){
+                    statement.setNull(index,Types.NULL);
                 }
             }
         } catch (SQLException e) {
