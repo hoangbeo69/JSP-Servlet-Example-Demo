@@ -21,8 +21,6 @@ public class HomeController extends HttpServlet {
     @Inject
     private ICategoryService categoryService;
 
-    @Inject
-    private INewsService newsService;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException{
@@ -30,14 +28,15 @@ public class HomeController extends HttpServlet {
 //        UserModel user = new UserModel();
 //        user.setFullName("Hell everyone");
 //        request.setAttribute("model",user); //đặt tên đối tượng này là model để các file JSP có thể gọi
-        String title = "Ôi bạn ơi";
-        String content = "Đây là test nha bạn ơi";
-        Long categoryId = 1L;
-        NewsModel news = new NewsModel();
-        news.setTitle(title);
-        news.setContent(content);
-        news.setCategoryId(categoryId);
-        newsService.save(news);
+//        String title = "Ôi bạn ơi";
+//        String content = "Đây là test nha bạn ơi";
+//        Long categoryId = 1L;
+//        NewsModel news = new NewsModel();
+//        news.setTitle(title);
+//        news.setContent(content);
+//        news.setCategoryId(categoryId);
+//        newsService.save(news);
+
         request.setAttribute("categorys",categoryService.findAll());
         RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
         rd.forward(request,response);
