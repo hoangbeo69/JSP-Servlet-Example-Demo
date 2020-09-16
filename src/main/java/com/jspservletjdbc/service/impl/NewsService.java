@@ -33,4 +33,11 @@ public class NewsService implements INewsService {
         return newsDao.findOne(updateNews.getId());
     }
 
+    @Override
+    public void delete(long[] ids) {
+        for(int count = 0 ; count < ids.length ; count++){
+            newsDao.delete(ids[count]);
+        }
+    }
+
 }

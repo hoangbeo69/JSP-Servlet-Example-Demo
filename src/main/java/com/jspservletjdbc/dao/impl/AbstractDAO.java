@@ -142,6 +142,58 @@ public class AbstractDAO<T> implements GenericDAO<T> {
         }
     }
 
+    /**
+     *
+     * @param sql
+     * @param parameters
+     */
+    @Override
+    public void delete(String sql, Object... parameters) {
+        ResultSet resultSet = null;
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try{
+            connection = getConnection();
+            connection.setAutoCommit(false);
+            statement = connection.prepareStatement(sql);
+            setParameter(statement,parameters);
+            statement.executeUpdate();
+            connection.commit();
+        }catch (SQLException e){
+            System.out.println(e);
+            if (connection != null) {
+                try {
+                    connection.rollback(); //nếu 1 trong các commit phía trên thì nó sẽ quay trở về như ban đầu khi chưa insert
+                } catch (SQLException throwables) {
+                    System.out.println(e);
+                }
+            }
+        }finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+            } catch (SQLException throwables) {
+                System.out.println(throwables);
+            }
+        }
+    }
+
+    /**
+     * @param statement
+     * câu lênh statemet query
+     * @param parameters
+     * các tham số truyền vào
+     * @apiNote
+     *hàm này sử dụng khi sử dụng preparedStatement có các tham số được truyền vào là các parameters
+     * hàm này có nhiệm vụ là sẽ tự động kiểm tra kiểu biến được gửi vào là kiểu gì và tự set statement.set{kiểu dữ liệu}({index},parameters)
+     */
     private void setParameter(PreparedStatement statement, Object... parameters) {
         try {
             for (int count = 0; count < parameters.length; count++) {

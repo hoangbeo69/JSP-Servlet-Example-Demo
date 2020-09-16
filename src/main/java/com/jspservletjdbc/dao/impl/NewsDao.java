@@ -38,4 +38,10 @@ public class NewsDao extends AbstractDAO implements INewsDao {
                 updateNew.getModifiedBy(), updateNew.getId());
     }
 
+    @Override
+    public void delete(long id) {
+        String sql = "Delete From news Where id = ?";
+        delete(sql,id);
+    }
+
 }

@@ -7,7 +7,14 @@ public class NewsModel extends AbstractModel{
     private String content;
     private Long categoryId;
     private String categoryCode;
+    private long[] ids;
 
+    public void setIds(long[] ids){
+        this.ids = ids;
+    }
+    public long[] getIds(){
+        return ids;
+    }
     public String getTitle() {
         return title;
     }
