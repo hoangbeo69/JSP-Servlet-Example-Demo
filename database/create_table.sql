@@ -61,12 +61,19 @@ CREATE TABLE comment (
   modifiedby VARCHAR(255) NULL
 );
 
-ALTER TABLE comment ADD CONSTRAINT fk_comment_user FOREIGN KEY (user_id) REFERENCES user(id);
-ALTER TABLE comment ADD CONSTRAINT fk_comment_news FOREIGN KEY (new_id) REFERENCES news(id);
+ALTER TABLE comment
+    ADD CONSTRAINT fk_comment_news
+        FOREIGN KEY (new_id)
+            REFERENCES news (id)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE;
 
-
-
-
+ALTER TABLE comment
+    ADD CONSTRAINT fk_comment_user
+        FOREIGN KEY (user_id)
+            REFERENCES user(id)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE;
 
 
 

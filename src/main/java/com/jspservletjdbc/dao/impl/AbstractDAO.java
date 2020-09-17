@@ -116,6 +116,7 @@ public class AbstractDAO<T> implements GenericDAO<T> {
             connection.commit(); //commit các câu truy vấn => các dữ liệu bắt đầu thay đổi
             return id;
         } catch (SQLException e) {
+            System.out.println(e);
             if (connection != null) {
                 try {
                     connection.rollback(); //nếu 1 trong các commit phía trên thì nó sẽ quay trở về như ban đầu khi chưa insert

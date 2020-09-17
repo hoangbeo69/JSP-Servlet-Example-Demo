@@ -8,7 +8,14 @@ public class AbstractModel {
     private Timestamp modifiedDate;
     private String createdBy;
     private String modifiedBy;
+    private long[] ids;
 
+    public void setIds(long[] ids){
+        this.ids = ids;
+    }
+    public long[] getIds(){
+        return ids;
+    }
     public long getId() {
         return id;
     }

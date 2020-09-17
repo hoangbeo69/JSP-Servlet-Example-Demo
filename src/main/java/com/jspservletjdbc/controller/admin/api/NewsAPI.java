@@ -49,7 +49,6 @@ public class NewsAPI extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json");
         NewsModel deleteNews = HttpUtil.of(req.getReader()).toModel(NewsModel.class);
-
         newsService.delete(deleteNews.getIds());
         mapper.writeValue(resp.getOutputStream(),"{}");
 
