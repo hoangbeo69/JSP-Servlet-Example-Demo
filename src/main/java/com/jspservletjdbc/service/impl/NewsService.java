@@ -21,6 +21,8 @@ public class NewsService implements INewsService {
     public NewsModel save(NewsModel newsModel) {
         newsModel.setCreateDate(new Timestamp(System.currentTimeMillis()));
         newsModel.setCreatedBy("");
+        newsModel.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+        newsModel.setModifiedBy("");
         long newID = newsDao.save(newsModel);
         return newsDao.findOne(newID);
     }
@@ -41,6 +43,11 @@ public class NewsService implements INewsService {
         for(int count = 0 ; count < ids.length ; count++){
             newsDao.delete(ids[count]);
         }
+    }
+
+    @Override
+    public List<NewsModel> findAll() {
+        return newsDao.findAll();
     }
 
 }

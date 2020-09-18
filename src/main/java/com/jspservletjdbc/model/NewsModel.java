@@ -1,6 +1,6 @@
 package com.jspservletjdbc.model;
 
-public class NewsModel extends AbstractModel{
+public class NewsModel extends AbstractModel<AbstractModel>{
     private String title;
     private String thumbnail;
     private String shortDescription;

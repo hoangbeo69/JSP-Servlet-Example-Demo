@@ -1,14 +1,24 @@
 package com.jspservletjdbc.model;
 
 import java.sql.Timestamp;
+import java.util.List;
 
-public class AbstractModel {
+public class AbstractModel<T> {
     private long id;
     private Timestamp createDate;
     private Timestamp modifiedDate;
     private String createdBy;
     private String modifiedBy;
     private long[] ids;
+    private List<T> listResult;
+
+    public List<T> getListResult() {
+        return listResult;
+    }
+
+    public void setListResult(List<T> listResult) {
+        this.listResult = listResult;
+    }
 
     public void setIds(long[] ids){
         this.ids = ids;

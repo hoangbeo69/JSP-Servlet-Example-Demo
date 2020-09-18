@@ -2,7 +2,7 @@ package com.jspservletjdbc.model;
 
 import java.sql.Timestamp;
 
-public class UserModel extends AbstractModel{
+public class UserModel extends AbstractModel<UserModel>{
     private long id;
     private String userName;
     private String fullName;

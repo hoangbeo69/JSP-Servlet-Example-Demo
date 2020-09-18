@@ -49,4 +49,10 @@ public class NewsDao extends AbstractDAO implements INewsDao {
         delete(sql,id);
     }
 
+    @Override
+    public List<NewsModel> findAll() {
+        String sql = "Select * from news";
+        return query(sql,new NewsMapper());
+    }
+
 }
