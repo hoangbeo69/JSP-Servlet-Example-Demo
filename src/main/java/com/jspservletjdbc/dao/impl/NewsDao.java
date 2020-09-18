@@ -51,7 +51,7 @@ public class NewsDao extends AbstractDAO implements INewsDao {
 
     @Override
     public List<NewsModel> findAll() {
-        String sql = "Select * from news";
+        String sql = "Select * From news";
         return query(sql,new NewsMapper());
     }
 

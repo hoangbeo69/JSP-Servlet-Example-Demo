@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="/common/taglib.jsp"%>
 <html>
 
 <head>
@@ -35,32 +36,34 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <c:forEach var="item" items="${model.listResult}" >
                                     <tr>
-                                        <td>John</td>
-                                        <td>Doe</td>
+                                        <td>${item.title}</td>
+                                        <td>${item.shortDescription}</td>
                                     </tr>
+                                    </c:forEach>
                                 </tbody>
                             </table>
                         </div>
-<%--                        <ul id="pagination" class="pagination-sm"></ul>--%>
+                        <ul id="pagination" class="pagination-sm"></ul>
                     </div>
                 </div>
             </div>
         </div>
     </div><!-- /.main-content -->
-<%--    <script type="text/javascript">--%>
-<%--    $('#pagination').twbsPagination({--%>
-<%--        startPage:2,--%>
-<%--        totalPages: 16,--%>
-<%--        visiblePages: 6,--%>
-<%--        next: 'Next',--%>
-<%--        prev: 'Prev',--%>
-<%--            onPageClick: function (event, page) {--%>
-<%--            //fetch content and render here--%>
-<%--            $('#page-content').text('Page ' + page) + ' content here';--%>
-<%--            }--%>
-<%--    });--%>
-<%--    </script>--%>
+    <script type="text/javascript">
+    $('#pagination').twbsPagination({
+        startPage:2,
+        totalPages: 16,
+        visiblePages: 6,
+        next: 'Next',
+        prev: 'Prev',
+            onPageClick: function (event, page) {
+            //fetch content and render here
+            $('#page-content').text('Page ' + page) + ' content here';
+            }
+    });
+    </script>
 </body>
 
 </html>

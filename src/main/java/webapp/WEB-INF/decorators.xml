@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<!--Đặt thư mục gốc chứa các master page-->
 <decorators defaultdir="/decorators">
     <!-- Any urls that are excluded will never be decorated by Sitemesh -->
     <!--    Các file nào có bắt đầu bằng /api thì không trả về giao diện-->

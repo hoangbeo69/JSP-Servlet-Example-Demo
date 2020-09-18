@@ -33,10 +33,8 @@ public class AbstractDAO<T> implements GenericDAO<T> {
         try {
             connection = getConnection();
             statement = connection.prepareStatement(sql);
-
             //set tham số cho cho câu query nếu có
             setParameter(statement, parameters);
-
             rs = statement.executeQuery();
             while (rs.next()) {
                 results.add(rowMapper.mapRow(rs));
