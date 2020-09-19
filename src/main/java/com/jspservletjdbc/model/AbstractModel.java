@@ -15,6 +15,15 @@ public class AbstractModel<T> {
     private int page = 1; //hiển thị ở page nào
     private int maxPageItem; //tổng số item nhiều nhất trên 1 page
     private int totalPage; //tổng số trang có thể phân ra
+    private int totalIem;
+
+    public int getTotalIem() {
+        return totalIem;
+    }
+
+    public void setTotalIem(int totalIem) {
+        this.totalIem = totalIem;
+    }
 
     public void setMaxPageItem(int maxPageItem) {
         this.maxPageItem = maxPageItem;

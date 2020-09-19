@@ -11,6 +11,7 @@
 <html>
     <head>
         <title><dec:title default="Trang chủ" /></title>
+        <link href="<c:url value="/template/admin/css/style.css" />" rel="stylesheet">
         <link rel="stylesheet" href="<c:url value='/template/admin/assets/css/bootstrap.min.css' />" />
         <link rel="stylesheet" href="<c:url value='/template/admin/font-awesome/4.5.0/css/font-awesome.min.css' />" />
         <link rel="stylesheet" href="<c:url value='/template/admin/assets/css/ace.min.css' />" class="ace-main-stylesheet" id="main-ace-style" />

@@ -17,6 +17,7 @@
         <maven.compiler.release>11</maven.compiler.release>
         <mysql.version>8.0.16</mysql.version>
         <weld.servlet.version>3.1.0.Final</weld.servlet.version>
+        <beanutils.version>1.9.4</beanutils.version>
     </properties>
     <!--thiết lập môi trường chạy là java 11.0.7-->
     <build>
@@ -74,6 +75,14 @@
             <artifactId>weld-servlet-core</artifactId>
             <version>${weld.servlet.version}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>${beanutils.version}</version>
+        </dependency>
+
 
         <!-- json -->
         <dependency>

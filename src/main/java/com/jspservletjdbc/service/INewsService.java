@@ -9,5 +9,6 @@ public interface INewsService {
     NewsModel save(NewsModel newsModel);
     NewsModel update(NewsModel updateNews);
     void delete(long[] ids);
-    List<NewsModel> findAll();
+    List<NewsModel> findAll(int offset,int limit);
+    int getTotalItem();
 }

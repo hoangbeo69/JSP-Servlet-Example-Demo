@@ -11,6 +11,7 @@
 
 <head>
     <title>Danh Sách Bài Viết</title>
+    <link rel="stylesheet/css" >
 </head>
 
 <body>
@@ -24,6 +25,7 @@
                     </li>
                 </ul><!-- /.breadcrumb -->
             </div>
+            <form action="<c:url value="/admin-news-list"/>" id="formSubmit" method="get">
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
@@ -46,24 +48,36 @@
                             </table>
                         </div>
                         <ul id="pagination" class="pagination-sm"></ul>
+                        <input type="hidden" value="" id="page" name="page"/>
+                        <input type="hidden" value="" id="maxPageItem" name="maxPageItem">
                     </div>
                 </div>
             </div>
+            </form>
         </div>
     </div><!-- /.main-content -->
     <script type="text/javascript">
-    $('#pagination').twbsPagination({
-        startPage:2,
-        totalPages: 16,
-        visiblePages: 6,
-        next: 'Next',
-        prev: 'Prev',
-            onPageClick: function (event, page) {
-            //fetch content and render here
-            $('#page-content').text('Page ' + page) + ' content here';
-            }
-    });
+
+        /* jQuery Pagination Example (twbs-pagination) */
+        var totalPage = ${model.totalPage};
+        var currentPage = ${model.page};
+        var limit = 2;
+        $('#pagination').twbsPagination({
+            startPage: currentPage,
+            totalPages: totalPage,
+            visiblePages: 10,
+            next: 'Next',
+            prev: 'Prev',
+                onPageClick: function (event, page) {
+                //fetch content and render here
+                    if(currentPage != page ) {
+                        $('#maxPageItem').val(limit);
+                        $('#page').val(page);
+                        $('#formSubmit').submit();
+                    }
+                }
+        });
+        /* jQuery Pagination Example (twbs-pagination) */
+
     </script>
 </body>
-
-</html>

@@ -5,6 +5,7 @@ import com.jspservletjdbc.model.AbstractModel;
 import com.jspservletjdbc.model.NewsModel;
 import com.jspservletjdbc.service.INewsService;
 import com.jspservletjdbc.service.impl.NewsService;
+import com.jspservletjdbc.utils.FormUtil;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -24,8 +25,11 @@ public class NewsController extends HttpServlet {
     private INewsService newsService;
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
-        NewsModel model = new NewsModel();
-        model.setListResult(newsService.findAll());
+        NewsModel model = FormUtil.toModel(NewsModel.class,request);
+        int offset = (model.getPage()-1)* model.getMaxPageItem();
+        model.setListResult(newsService.findAll(offset,model.getMaxPageItem()));
+        model.setTotalIem(newsService.getTotalItem());
+        model.setTotalPage((int) Math.ceil(model.getTotalIem())/model.getMaxPageItem());
         request.setAttribute(SystemConstant.MODEL,model);
         System.out.println(model.getListResult());
         RequestDispatcher rd = request.getRequestDispatcher("/views/admin/news/list.jsp");
