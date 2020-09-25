@@ -1,7 +1,9 @@
 package com.jspservletjdbc.dao;
 
 import com.jspservletjdbc.model.NewsModel;
+import com.jspservletjdbc.paging.Pageble;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 public interface INewsDao extends GenericDAO {
@@ -10,6 +12,6 @@ public interface INewsDao extends GenericDAO {
     NewsModel findOne(Long id);
     void update(NewsModel updateModel);
     void delete(long id);
-    List<NewsModel> findAll(int offset,int limit);
+    List<NewsModel> findAll(Pageble pageble);
     int count();
 }

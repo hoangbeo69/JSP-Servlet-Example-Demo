@@ -50,6 +50,8 @@
                         <ul id="pagination" class="pagination-sm"></ul>
                         <input type="hidden" value="" id="page" name="page"/>
                         <input type="hidden" value="" id="maxPageItem" name="maxPageItem">
+                        <input type="hidden" value="" id="sortName" name="sortName">
+                        <input type="hidden" value="" id="sortBy" name="sortBy">
                     </div>
                 </div>
             </div>
@@ -73,6 +75,8 @@
                     if(currentPage != page ) {
                         $('#maxPageItem').val(limit);
                         $('#page').val(page);
+                        $('#sortName').val('title');
+                        $('#sortBy').val('desc');
                         $('#formSubmit').submit();
                     }
                 }

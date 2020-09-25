@@ -1,6 +1,7 @@
 package com.jspservletjdbc.service;
 
 import com.jspservletjdbc.model.NewsModel;
+import com.jspservletjdbc.paging.Pageble;
 
 import java.util.List;
 
@@ -9,6 +10,6 @@ public interface INewsService {
     NewsModel save(NewsModel newsModel);
     NewsModel update(NewsModel updateNews);
     void delete(long[] ids);
-    List<NewsModel> findAll(int offset,int limit);
+    List<NewsModel> findAll(Pageble pageble);
     int getTotalItem();
 }

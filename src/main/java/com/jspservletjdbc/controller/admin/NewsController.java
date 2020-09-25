@@ -3,8 +3,11 @@ package com.jspservletjdbc.controller.admin;
 import com.jspservletjdbc.constant.SystemConstant;
 import com.jspservletjdbc.model.AbstractModel;
 import com.jspservletjdbc.model.NewsModel;
+import com.jspservletjdbc.paging.PageRequest;
+import com.jspservletjdbc.paging.Pageble;
 import com.jspservletjdbc.service.INewsService;
 import com.jspservletjdbc.service.impl.NewsService;
+import com.jspservletjdbc.sort.Sorter;
 import com.jspservletjdbc.utils.FormUtil;
 
 import javax.inject.Inject;
@@ -26,8 +29,9 @@ public class NewsController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
         NewsModel model = FormUtil.toModel(NewsModel.class,request);
-        int offset = (model.getPage()-1)* model.getMaxPageItem();
-        model.setListResult(newsService.findAll(offset,model.getMaxPageItem()));
+        Pageble pageble = new PageRequest(model.getPage(),model.getMaxPageItem(),
+                new Sorter(model.getSortName(),model.getSortBy()));
+        model.setListResult(newsService.findAll(pageble));
         model.setTotalIem(newsService.getTotalItem());
         model.setTotalPage((int) Math.ceil(model.getTotalIem())/model.getMaxPageItem());
         request.setAttribute(SystemConstant.MODEL,model);

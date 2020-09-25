@@ -2,6 +2,7 @@ package com.jspservletjdbc.service.impl;
 
 import com.jspservletjdbc.dao.INewsDao;
 import com.jspservletjdbc.model.NewsModel;
+import com.jspservletjdbc.paging.Pageble;
 import com.jspservletjdbc.service.INewsService;
 
 import javax.inject.Inject;
@@ -46,9 +47,10 @@ public class NewsService implements INewsService {
     }
 
     @Override
-    public List<NewsModel> findAll(int offset,int limit) {
-        return newsDao.findAll(offset,limit);
+    public List<NewsModel> findAll(Pageble pageble) {
+        return newsDao.findAll(pageble);
     }
+
 
     @Override
     public int getTotalItem() {

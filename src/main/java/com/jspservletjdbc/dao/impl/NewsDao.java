@@ -3,6 +3,7 @@ package com.jspservletjdbc.dao.impl;
 import com.jspservletjdbc.dao.INewsDao;
 import com.jspservletjdbc.mapper.NewsMapper;
 import com.jspservletjdbc.model.NewsModel;
+import com.jspservletjdbc.paging.Pageble;
 
 import java.sql.*;
 import java.util.List;
@@ -50,10 +51,17 @@ public class NewsDao extends AbstractDAO implements INewsDao {
     }
 
     @Override
-    public List<NewsModel> findAll(int offset,int limit) {
-        String sql = "Select * From news Limit ?,?";
-        return query(sql,new NewsMapper(),offset,limit);
+    public List<NewsModel> findAll(Pageble pageble) {
+        StringBuilder sql = new StringBuilder("Select * From news ");
+        if (pageble.getSoter() != null) {
+            sql.append("Order by "+pageble.getSoter().getSortName()+" "+pageble.getSoter().getSortBy()+"");
+        }
+        if (pageble.getLimit() != null && pageble.getLimit() != null ){
+            sql.append(" Limit "+pageble.getOffset() +", "+ pageble.getLimit()+"");
+        }
+        return query(sql.toString(),new NewsMapper());
     }
+
 
     @Override
     public int count() {

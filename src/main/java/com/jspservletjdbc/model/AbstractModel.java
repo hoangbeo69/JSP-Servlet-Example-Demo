@@ -12,40 +12,58 @@ public class AbstractModel<T> {
     private String modifiedBy;
     private long[] ids;
     private List<T> listResult = new ArrayList<>();
-    private int page = 1; //hiển thị ở page nào
-    private int maxPageItem; //tổng số item nhiều nhất trên 1 page
-    private int totalPage; //tổng số trang có thể phân ra
-    private int totalIem;
+    private Integer page = 1; //hiển thị ở page nào
+    private Integer maxPageItem; //tổng số item nhiều nhất trên 1 page
+    private Integer totalPage; //tổng số trang có thể phân ra
+    private Integer totalIem;
+    private String sortName;
+    private String sortBy;
 
-    public int getTotalIem() {
+    public String getSortName() {
+        return sortName;
+    }
+
+    public void setSortName(String sortName) {
+        this.sortName = sortName;
+    }
+
+    public String getSortBy() {
+        return sortBy;
+    }
+
+    public void setSortBy(String sortBy) {
+        this.sortBy = sortBy;
+    }
+
+    public Integer getTotalIem() {
         return totalIem;
     }
 
-    public void setTotalIem(int totalIem) {
+    public void setTotalIem(Integer totalIem) {
         this.totalIem = totalIem;
     }
 
-    public void setMaxPageItem(int maxPageItem) {
+    public void setMaxPageItem(Integer maxPageItem) {
         this.maxPageItem = maxPageItem;
     }
 
-    public int getMaxPageItem() {
+    public Integer getMaxPageItem() {
         return maxPageItem;
     }
 
-    public int getTotalPage() {
+    public Integer getTotalPage() {
         return totalPage;
     }
 
-    public void setTotalPage(int totalPage) {
+    public void setTotalPage(Integer totalPage) {
         this.totalPage = totalPage;
     }
 
-    public void setPage(int page) {
+    public void setPage(Integer page) {
         this.page = page;
     }
 
-    public int getPage() {
+    public Integer getPage() {
         return page;
     }
 
