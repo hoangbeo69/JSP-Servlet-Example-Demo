@@ -6,6 +6,7 @@
         <element id="directory" name="classes">
           <element id="module-output" name="JSP-Servlet-JDBC" />
           <element id="module-output" name="servlet-jsp-jdbc-learn" />
+          <element id="module-output" name="JSP-Servlet-Example-Demo" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
