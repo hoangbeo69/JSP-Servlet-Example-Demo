@@ -13,7 +13,7 @@ public class UserDao extends AbstractDAO<UserModel> implements IUserDao{
     public UserModel findUserNameAndPasswordStatus(String userName, String passWord, int status) {
         StringBuilder sql = new StringBuilder("Select * From user as u ");
         sql.append("Inner Join role as r On r.id = u.id ");
-        sql.append("Where username = ? And password =? status = ?");
+        sql.append("Where username = ? And password =? And status = ?");
         List<UserModel> users = query(sql.toString(),new UserMapper(),userName,passWord,status);
         return users.isEmpty() ? null : users.get(0);
     }

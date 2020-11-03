@@ -41,7 +41,6 @@ public class HomeController extends HttpServlet {
 //        newsService.save(news);
         RequestDispatcher rd;
         String action = request.getParameter("action");
-        System.out.println("action =" +action);
         if(action != null && action.equals("login")){
             rd = request.getRequestDispatcher("/views/login.jsp");
         }else if(action != null && action.equals("logout")){
@@ -58,8 +57,7 @@ public class HomeController extends HttpServlet {
         String action =request.getParameter("action");
         if(action!= null && action.equals("login")){
             UserModel user = FormUtil.toModel(UserModel.class,request);
-            System.out.println(user.getPassWord());
-            System.out.println(user.getUserName());
+            user = userService.findUserByNameAndPasswordStatus(user.getUserName(),user.getPassWord(),1);
             if(user == null){
                 rd = request.getRequestDispatcher("/views/login.jsp");
             }else {
