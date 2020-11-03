@@ -60,6 +60,9 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a href="#" class="dropdown-toggle" >Hé</a>
+        </li>
     </ul>
     <div class="sidebar-toggle sidebar-collapse">
         <i class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
