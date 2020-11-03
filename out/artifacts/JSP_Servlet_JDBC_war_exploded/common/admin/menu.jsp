@@ -5,7 +5,7 @@
   Time: 15:54
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <%@include file="/common/taglib.jsp"%>
 <!doctype html>
 
@@ -59,6 +59,9 @@
                     <b class="arrow"></b>
                 </li>
             </ul>
+        </li>
+        <li>
+            <a href="#" class="dropdown-toggle" >Hé</a>
         </li>
     </ul>
     <div class="sidebar-toggle sidebar-collapse">

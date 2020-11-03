@@ -12,13 +12,14 @@
     <decorator name="admin" page="admin.jsp">
         <pattern>/admin*</pattern>
     </decorator>
-    <!--    admin.jsp là một master layout ( page parent)-->
 
+    <!--    admin.jsp là một master layout ( page parent)-->
     <decorator name="web" page="web.jsp">
         <pattern>/*</pattern>
     </decorator>
 
-<!--    <decorator name="login" page="login.jsp">-->
-<!--        <pattern>/dang-nhap</pattern>-->
-<!--    </decorator>-->
+    <!--    login.jsp là một master layout-->
+    <decorator name="login" page="login.jsp">
+        <pattern>/dang-nhap*</pattern>
+    </decorator>
 </decorators>

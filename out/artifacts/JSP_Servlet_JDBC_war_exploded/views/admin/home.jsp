@@ -17,13 +17,13 @@
             <ul class="breadcrumb">
                 <li>
                     <i class="ace-icon fa fa-home home-icon"></i>
-                    <a href="#">Trang chủ</a>
+                    <a href="#">Trang chủ chủ chủ chủ</a>
                 </li>
             </ul><!-- /.breadcrumb -->
         </div>
         <div class="page-content">
             <div class="row" >
-                <div class="col-xs-12">
+                <div class="col-xs-12" >
 
                 </div>
             </div>

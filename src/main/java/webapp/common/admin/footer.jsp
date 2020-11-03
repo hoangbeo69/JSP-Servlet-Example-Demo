@@ -12,7 +12,7 @@
     <div class="footer-inner">
         <div class="footer-content">
 						<span class="bigger-120">
-							<span class="blue bolder">Ace</span>
+							<span class="blue bolder">Ace1</span>
 							Application &copy; 2013-2014
 						</span>
 

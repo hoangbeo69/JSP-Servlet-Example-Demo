@@ -5,13 +5,14 @@
   Time: 15:54
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
+<%@include file="/common/taglib.jsp"%>
 <html>
 <div class="footer">
     <div class="footer-inner">
         <div class="footer-content">
 						<span class="bigger-120">
-							<span class="blue bolder">Ace</span>
+							<span class="blue bolder">Ace1</span>
 							Application &copy; 2013-2014
 						</span>
 

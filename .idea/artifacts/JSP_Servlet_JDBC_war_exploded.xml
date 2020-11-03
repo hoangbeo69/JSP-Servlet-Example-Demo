@@ -43,6 +43,7 @@
       </element>
       <element id="javaee-facet-resources" facet="JSP-Servlet-JDBC/web/Web" />
       <element id="javaee-facet-resources" facet="servlet-jsp-jdbc-learn/web/Web" />
+      <element id="javaee-facet-resources" facet="JSP-Servlet-Example-Demo/web/Web" />
     </root>
   </artifact>
 </component>
