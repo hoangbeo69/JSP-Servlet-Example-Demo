@@ -20,6 +20,7 @@
 
     <!--    login.jsp là một master layout-->
     <decorator name="login" page="login.jsp">
-        <pattern>/dang-nhap*</pattern>
+        <pattern>/login*</pattern>
     </decorator>
+
 </decorators>

@@ -18,14 +18,9 @@
         <pattern>/*</pattern>
     </decorator>
 
-<<<<<<< HEAD
     <!--    login.jsp là một master layout-->
     <decorator name="login" page="login.jsp">
-        <pattern>/dang-nhap*</pattern>
+        <pattern>/login*</pattern>
     </decorator>
-=======
-<!--    <decorator name="login" page="login.jsp">-->
-<!--        <pattern>/dang-nhap</pattern>-->
-<!--    </decorator>-->
->>>>>>> parent of 6560d0c... thêm chức năng đăng nhập
+
 </decorators>

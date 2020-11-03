@@ -5,13 +5,13 @@
   Time: 15:29
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <%@include file="/common/taglib.jsp"%>
 <!doctype html>
 <html lang="en">
 <head>
     <%--    nếu trang nào không định nghĩa title thì lấy tên là trang chủ--%>
-    <title><dec:title default="Trang Chủ"></title>
+    <title><dec:title default="Trang Chủ"/></title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

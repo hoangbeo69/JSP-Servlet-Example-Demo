@@ -15,18 +15,18 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Homeeee
+                    <a class="nav-link" href="#">Home
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<c:url value="/dang-nhap?action=login"/>">Loginn</a>
+                    <a class="nav-link" href="<c:url value="/login?action=login"/>">Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Alo</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">He,Contactt</a>
+                    <a class="nav-link" href="#">Contactt</a>
                 </li>
             </ul>
         </div>
