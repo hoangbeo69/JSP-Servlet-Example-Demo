@@ -42,7 +42,7 @@ public class HomeController extends HttpServlet {
         if(action != null && action.equals("login")){
             rd = request.getRequestDispatcher("/views/login.jsp");
         }else if(action != null && action.equals("logout")){
-            rd = request.getRequestDispatcher("/views/login.jsp");
+            rd = request.getRequestDispatcher("/views/");
         }else{
             request.setAttribute("categories",categoryService.findAll());
             rd = request.getRequestDispatcher("/views/web/home.jsp");
