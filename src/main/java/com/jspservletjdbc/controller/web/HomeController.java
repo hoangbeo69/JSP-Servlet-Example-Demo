@@ -5,6 +5,8 @@ import com.jspservletjdbc.model.NewsModel;
 import com.jspservletjdbc.model.UserModel;
 import com.jspservletjdbc.service.ICategoryService;
 import com.jspservletjdbc.service.INewsService;
+import com.jspservletjdbc.service.IUserService;
+import com.jspservletjdbc.utils.FormUtil;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -20,7 +22,8 @@ import java.io.IOException;
 public class HomeController extends HttpServlet {
     @Inject
     private ICategoryService categoryService;
-
+    @Inject
+    private IUserService userService;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException{
@@ -51,7 +54,22 @@ public class HomeController extends HttpServlet {
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
-        RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
+        RequestDispatcher rd =null;
+        String action =request.getParameter("action");
+        if(action!= null && action.equals("login")){
+            UserModel user = FormUtil.toModel(UserModel.class,request);
+            System.out.println(user.getPassWord());
+            System.out.println(user.getUserName());
+            if(user == null){
+                rd = request.getRequestDispatcher("/views/login.jsp");
+            }else {
+                if(user.getRoleModel().getName().equals("USER")){
+                    rd = request.getRequestDispatcher("/views/web/home.jsp");
+                }else {
+                    rd = request.getRequestDispatcher("/views/admin/home.jsp");
+                }
+            }
+        }
         rd.forward(request,response);
     }
 }

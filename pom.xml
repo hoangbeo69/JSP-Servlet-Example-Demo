@@ -15,7 +15,7 @@
         <jstl.version>1.2</jstl.version>
         <sitemesh.version>2.4.2</sitemesh.version>
         <maven.compiler.release>11</maven.compiler.release>
-        <mysql.version>8.0.16</mysql.version>
+        <mysql.version>8.0.21</mysql.version>
         <weld.servlet.version>3.1.0.Final</weld.servlet.version>
         <beanutils.version>1.9.4</beanutils.version>
     </properties>

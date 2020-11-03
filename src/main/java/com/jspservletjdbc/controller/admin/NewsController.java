@@ -3,6 +3,7 @@ package com.jspservletjdbc.controller.admin;
 import com.jspservletjdbc.constant.SystemConstant;
 import com.jspservletjdbc.model.AbstractModel;
 import com.jspservletjdbc.model.NewsModel;
+import com.jspservletjdbc.model.UserModel;
 import com.jspservletjdbc.paging.PageRequest;
 import com.jspservletjdbc.paging.Pageble;
 import com.jspservletjdbc.service.INewsService;
@@ -41,6 +42,5 @@ public class NewsController extends HttpServlet {
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
-
     }
 }

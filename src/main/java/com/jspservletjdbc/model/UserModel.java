@@ -7,12 +7,17 @@ public class UserModel extends AbstractModel<UserModel>{
     private String userName;
     private String fullName;
     private String passWord;
-    private boolean status;
+    private long status;
     private long roleId;
-    private Timestamp createDate;
-    private Timestamp modifiedDate;
-    private String createdBy;
-    private String modifiedBy;
+    private RoleModel roleModel = new RoleModel();
+
+    public RoleModel getRoleModel() {
+        return roleModel;
+    }
+
+    public void setRoleModel(RoleModel roleModel) {
+        this.roleModel = roleModel;
+    }
 
     public String getUserName() {
         return userName;
@@ -38,11 +43,11 @@ public class UserModel extends AbstractModel<UserModel>{
         this.passWord = passWord;
     }
 
-    public boolean isStatus() {
+    public long isStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(long status) {
         this.status = status;
     }
 

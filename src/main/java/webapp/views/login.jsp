@@ -22,9 +22,10 @@
         </div>
 
         <!-- Login Form -->
-        <form>
-            <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-            <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+        <form id="login" action="<c:url value="/login"/>" method="post">
+            <input type="text" required="" id="username" class="fadeIn second" name="userName" placeholder="UserName">
+            <input type="text" required="" id="password" class="fadeIn third" name="passWord" placeholder="Password">
+            <input type="hidden" id="action" name="action" value="login">
             <input type="submit" class="fadeIn fourth" value="Log In">
         </form>
 
