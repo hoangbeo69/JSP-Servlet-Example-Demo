@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 //@WebServlet(urlPatterns = {"/home","/login"})
-@WebServlet(urlPatterns = {"/home","/dang-nhap","/thoat"})
+@WebServlet(urlPatterns = {"/home"})
 public class HomeController extends HttpServlet {
     @Inject
     private ICategoryService categoryService;
@@ -36,6 +36,7 @@ public class HomeController extends HttpServlet {
 //        news.setContent(content);
 //        news.setCategoryId(categoryId);
 //        newsService.save(news);
+<<<<<<< HEAD
         RequestDispatcher rd;
         String action = request.getParameter("action");
         System.out.println("action =" +action);
@@ -47,10 +48,16 @@ public class HomeController extends HttpServlet {
             request.setAttribute("categories",categoryService.findAll());
             rd = request.getRequestDispatcher("/views/web/home.jsp");
         }
+=======
+
+        request.setAttribute("categorys",categoryService.findAll());
+        RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
+>>>>>>> parent of 6560d0c... thêm chức năng đăng nhập
         rd.forward(request,response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
-
+        RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
+        rd.forward(request,response);
     }
 }
