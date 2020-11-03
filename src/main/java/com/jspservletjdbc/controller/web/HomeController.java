@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 //@WebServlet(urlPatterns = {"/home","/login"})
-@WebServlet(urlPatterns = {"/home"})
+@WebServlet(urlPatterns = {"/home","/dang-nhap","/thoat"})
 public class HomeController extends HttpServlet {
     @Inject
     private ICategoryService categoryService;
@@ -36,14 +36,21 @@ public class HomeController extends HttpServlet {
 //        news.setContent(content);
 //        news.setCategoryId(categoryId);
 //        newsService.save(news);
-
-        request.setAttribute("categorys",categoryService.findAll());
-        RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
+        RequestDispatcher rd;
+        String action = request.getParameter("action");
+        System.out.println("action =" +action);
+        if(action != null && action.equals("login")){
+            rd = request.getRequestDispatcher("/views/login.jsp");
+        }else if(action != null && action.equals("logout")){
+            rd = request.getRequestDispatcher("/views/login.jsp");
+        }else{
+            request.setAttribute("categories",categoryService.findAll());
+            rd = request.getRequestDispatcher("/views/web/home.jsp");
+        }
         rd.forward(request,response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
-        RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
-        rd.forward(request,response);
+
     }
 }

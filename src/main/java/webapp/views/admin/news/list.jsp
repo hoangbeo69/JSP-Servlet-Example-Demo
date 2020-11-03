@@ -25,7 +25,7 @@
                     </li>
                 </ul><!-- /.breadcrumb -->
             </div>
-            <form action="<c:url value="/admin-news-list"/>" id="formSubmit" method="get">
+            <form action= "<c:url value= "/admin-news-list" />" id="formSubmit" method="get">
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">

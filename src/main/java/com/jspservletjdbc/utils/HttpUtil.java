@@ -39,7 +39,9 @@ public class HttpUtil {
         String line;
         try {
             while (true) {
-                if (!((line = reader.readLine()) != null)) break;
+                if ((line = reader.readLine()) == null) {
+                    break;
+                }
                 sb.append(line);
             }
         } catch (IOException e) {

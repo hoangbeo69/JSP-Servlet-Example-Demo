@@ -9,7 +9,6 @@ import com.jspservletjdbc.service.INewsService;
 import com.jspservletjdbc.service.impl.NewsService;
 import com.jspservletjdbc.sort.Sorter;
 import com.jspservletjdbc.utils.FormUtil;
-
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
