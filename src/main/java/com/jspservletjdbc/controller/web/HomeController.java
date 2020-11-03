@@ -40,9 +40,9 @@ public class HomeController extends HttpServlet {
         String action = request.getParameter("action");
         System.out.println("action =" +action);
         if(action != null && action.equals("login")){
-            rd = request.getRequestDispatcher("/views/login.jsp");
+            rd = request.getRequestDispatcher("/views/admin/home.jsp");
         }else if(action != null && action.equals("logout")){
-            rd = request.getRequestDispatcher("/views/");
+            rd = request.getRequestDispatcher("/views/login.jsp");
         }else{
             request.setAttribute("categories",categoryService.findAll());
             rd = request.getRequestDispatcher("/views/web/home.jsp");
