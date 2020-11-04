@@ -15,20 +15,22 @@
 <div class="wrapper fadeInDown">
     <div id="formContent">
         <!-- Tabs Titles -->
-
         <!-- Icon -->
         <div class="fadeIn first">
             <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
         </div>
-
         <!-- Login Form -->
         <form id="login" action="<c:url value="/login"/>" method="post">
             <input type="text" required="" id="username" class="fadeIn second" name="userName" placeholder="UserName">
             <input type="text" required="" id="password" class="fadeIn third" name="passWord" placeholder="Password">
             <input type="hidden" id="action" name="action" value="login">
             <input type="submit" class="fadeIn fourth" value="Log In">
+            <c:if test="${not empty message}">
+                <div class="alert alert-${alert} w90">
+                    <strong>Fail!</strong> ${message}
+                </div>
+            </c:if>
         </form>
-
         <!-- Remind Passowrd -->
         <div id="formFooter">
             <a class="underlineHover" href="#">Forgot Password ?</a>

@@ -260,3 +260,8 @@ input[type=text]:placeholder {
 #icon {
     width:60%;
 }
+.w90 {
+    width:90%;
+    text-align: center;
+    margin-left: 22.5px;
+}

@@ -7,6 +7,7 @@ import com.jspservletjdbc.service.ICategoryService;
 import com.jspservletjdbc.service.INewsService;
 import com.jspservletjdbc.service.IUserService;
 import com.jspservletjdbc.utils.FormUtil;
+import com.jspservletjdbc.utils.SessionUtil;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 //@WebServlet(urlPatterns = {"/home","/login"})
 @WebServlet(urlPatterns = {"/home","/login","/logout"})
@@ -24,50 +26,65 @@ public class HomeController extends HttpServlet {
     private ICategoryService categoryService;
     @Inject
     private IUserService userService;
-
+    ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException{
+        RequestDispatcher rd = null;
+        String action = request.getParameter("action") == null ? "home":request.getParameter("action") ;
 
-//        UserModel user = new UserModel();
-//        user.setFullName("Hell everyone");
-//        request.setAttribute("model",user); //đặt tên đối tượng này là model để các file JSP có thể gọi
-//        String title = "Ôi bạn ơi";
-//        String content = "Đây là test nha bạn ơi";
-//        Long categoryId = 1L;
-//        NewsModel news = new NewsModel();
-//        news.setTitle(title);
-//        news.setContent(content);
-//        news.setCategoryId(categoryId);
-//        newsService.save(news);
-        RequestDispatcher rd;
-        String action = request.getParameter("action");
-        if(action != null && action.equals("login")){
-            rd = request.getRequestDispatcher("/views/login.jsp");
-        }else if(action != null && action.equals("logout")){
-            rd = request.getRequestDispatcher("/views/login.jsp");
-        }else{
-            request.setAttribute("categories",categoryService.findAll());
-            rd = request.getRequestDispatcher("/views/web/home.jsp");
+//        if(action != null && action.equals("login")){
+//            rd = request.getRequestDispatcher(request.getContextPath()+"/views/login.jsp");
+//            rd.forward(request,response);
+//            if()
+//        }else if(action != null && action.equals("logout")){
+//            SessionUtil.getInstance().removeValue(request,"USERMODEL");
+//            response.sendRedirect(request.getContextPath()+"/login?action=login");
+//        }
+
+            switch (action) {
+                case "login":
+                    rd = request.getRequestDispatcher(request.getContextPath() + "/views/login.jsp");
+                    String message = request.getParameter("message");
+                    String alert = request.getParameter("alert");
+                    if(message != null  && alert != null ){
+                        request.setAttribute("message",resourceBundle.getString("userpassword_invalid"));
+                        request.setAttribute("alert",alert);
+                    }
+                    rd.forward(request, response);
+                    break;
+
+                case "logout":
+                    SessionUtil.getInstance().removeValue(request, "USERMODEL");
+                    response.sendRedirect(request.getContextPath() + "/login?action=login");
+                    break;
+
+                default:
+                    request.setAttribute("categories", categoryService.findAll());
+                    rd = request.getRequestDispatcher("/views/web/home.jsp");
+                    rd.forward(request, response);
+                    break;
+            }
         }
-        rd.forward(request,response);
-    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
-        RequestDispatcher rd =null;
         String action =request.getParameter("action");
         if(action!= null && action.equals("login")){
             UserModel user = FormUtil.toModel(UserModel.class,request);
             user = userService.findUserByNameAndPasswordStatus(user.getUserName(),user.getPassWord(),1);
+            SessionUtil.getInstance().putValue(request,"USERMODEL",user);
+
             if(user == null){
-                rd = request.getRequestDispatcher("/views/login.jsp");
+                response.sendRedirect(request.getContextPath()+"/login?action=login&message=userpassword_invalid&alert=danger");
             }else {
                 if(user.getRoleModel().getName().equals("USER")){
-                    rd = request.getRequestDispatcher("/views/web/home.jsp");
-                }else {
-                    rd = request.getRequestDispatcher("/views/admin/home.jsp");
+                    response.sendRedirect(request.getContextPath()+"/home");
+                }else if(user.getRoleModel().getName().equals("ADMIN")){
+                    response.sendRedirect(request.getContextPath()+"/admin-home");
                 }
             }
+
+        }else {
+            response.sendRedirect(request.getContextPath()+"/home");
         }
-        rd.forward(request,response);
     }
 }

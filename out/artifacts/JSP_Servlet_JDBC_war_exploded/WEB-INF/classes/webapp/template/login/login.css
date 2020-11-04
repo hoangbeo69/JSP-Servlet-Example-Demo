@@ -263,5 +263,5 @@ input[type=text]:placeholder {
 .w90 {
     width:90%;
     text-align: center;
-    margin-left: 22.5px;
+    position: relative;
 }

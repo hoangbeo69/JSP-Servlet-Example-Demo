@@ -9,7 +9,7 @@
 <%@include file="/common/taglib.jsp"%>
 <!doctype html>
 
-<div id="navbar" class="navbar navbar-default          ace-save-state">
+<div id="navbar" class="navbar navbar-default ace-save-state">
     <div class="navbar-container ace-save-state" id="navbar-container">
         <div class="navbar-header pull-left">
             <a href="#" class="navbar-brand">
@@ -23,14 +23,14 @@
             <ul class="nav ace-nav">
                 <li class="light-blue dropdown-modal">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                        Xin Chao, [Tên quản Trị]
+                        Xin Chao, ${USERMODEL.fullName}
                     </a>
+                </li>
                 <li class="light-blue dropdown-modal">
-                    <a href='#'>
+                    <a href='<c:url value="/login?action=login"/>'>
                         <i class="ace-icon fa fa-power-off"></i>
                         Thoát
                     </a>
-                </li>
                 </li>
             </ul>
         </div>
