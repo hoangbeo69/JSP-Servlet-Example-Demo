@@ -31,7 +31,6 @@ public class HomeController extends HttpServlet {
         throws ServletException, IOException{
         RequestDispatcher rd = null;
         String action = request.getParameter("action") == null ? "home":request.getParameter("action") ;
-        System.out.println(action);
 //        if(action != null && action.equals("login")){
 //            rd = request.getRequestDispatcher(request.getContextPath()+"/views/login.jsp");
 //            rd.forward(request,response);
