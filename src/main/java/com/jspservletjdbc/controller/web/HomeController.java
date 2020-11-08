@@ -47,7 +47,7 @@ public class HomeController extends HttpServlet {
                     String message = request.getParameter("message");
                     String alert = request.getParameter("alert");
                     if(message != null  && alert != null ){
-                        request.setAttribute("message",resourceBundle.getString("userpassword_invalid"));
+                        request.setAttribute("message",resourceBundle.getString(message));
                         request.setAttribute("alert",alert);
                     }
                     rd.forward(request, response);
