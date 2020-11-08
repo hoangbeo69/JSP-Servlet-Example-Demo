@@ -9,10 +9,6 @@
         <listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
     </listener>
 
-    <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
-
 <!--    Thiết lập sitemesh decorator nhằm việc thiết lập template với các loại url tương ứng-->
     <filter>
         <filter-name>sitemesh</filter-name>
@@ -37,4 +33,8 @@
     <session-config>
         <tracking-mode>COOKIE</tracking-mode>
     </session-config>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>
