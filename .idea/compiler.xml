@@ -11,5 +11,12 @@
         <module name="JSP-Servlet-JDBC" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel target="11" />
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_STRING" value="-encoding UTF-8" />
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="JSP-Servlet-Example-Demo" options="" />
+    </option>
   </component>
 </project>
