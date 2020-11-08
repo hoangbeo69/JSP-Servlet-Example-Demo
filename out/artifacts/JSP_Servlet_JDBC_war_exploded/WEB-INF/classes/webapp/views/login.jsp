@@ -17,7 +17,7 @@
         <!-- Tabs Titles -->
         <!-- Icon -->
         <div class="fadeIn first">
-            <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+            <img src="<c:url value="/images/skull.svg"/>" id="icon" alt="User Icon" />
         </div>
         <!-- Login Form -->
         <form id="login" action="<c:url value="/login"/>" method="post">

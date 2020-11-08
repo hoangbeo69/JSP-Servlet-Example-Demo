@@ -26,20 +26,12 @@ public class HomeController extends HttpServlet {
     private ICategoryService categoryService;
     @Inject
     private IUserService userService;
+
     ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException{
         RequestDispatcher rd = null;
         String action = request.getParameter("action") == null ? "home":request.getParameter("action") ;
-//        if(action != null && action.equals("login")){
-//            rd = request.getRequestDispatcher(request.getContextPath()+"/views/login.jsp");
-//            rd.forward(request,response);
-//            if()
-//        }else if(action != null && action.equals("logout")){
-//            SessionUtil.getInstance().removeValue(request,"USERMODEL");
-//            response.sendRedirect(request.getContextPath()+"/login?action=login");
-//        }
-
             switch (action) {
                 case "login":
                     rd = request.getRequestDispatcher(request.getContextPath() + "/views/login.jsp");
