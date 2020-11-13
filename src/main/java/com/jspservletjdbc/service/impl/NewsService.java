@@ -1,6 +1,8 @@
 package com.jspservletjdbc.service.impl;
 
+import com.jspservletjdbc.dao.ICategoryDAO;
 import com.jspservletjdbc.dao.INewsDao;
+import com.jspservletjdbc.model.CategoryModel;
 import com.jspservletjdbc.model.NewsModel;
 import com.jspservletjdbc.paging.Pageble;
 import com.jspservletjdbc.service.INewsService;
@@ -10,7 +12,8 @@ import java.sql.Timestamp;
 import java.util.List;
 
 public class NewsService implements INewsService {
-
+    @Inject
+    private ICategoryDAO categoryDAO;
     @Inject
     private INewsDao newsDao;
     @Override
@@ -21,9 +24,6 @@ public class NewsService implements INewsService {
     @Override
     public NewsModel save(NewsModel newsModel) {
         newsModel.setCreateDate(new Timestamp(System.currentTimeMillis()));
-        newsModel.setCreatedBy("");
-        newsModel.setModifiedDate(new Timestamp(System.currentTimeMillis()));
-        newsModel.setModifiedBy("");
         long newID = newsDao.save(newsModel);
         return newsDao.findOne(newID);
     }
@@ -34,15 +34,14 @@ public class NewsService implements INewsService {
         updateNews.setCreateDate(oldNews.getCreateDate());
         updateNews.setCreatedBy(oldNews.getCreatedBy());
         updateNews.setModifiedDate(new Timestamp(System.currentTimeMillis()));
-        updateNews.setModifiedBy("");
         newsDao.update(updateNews);
         return newsDao.findOne(updateNews.getId());
     }
 
     @Override
-    public void delete(long[] ids) {
-        for(int count = 0 ; count < ids.length ; count++){
-            newsDao.delete(ids[count]);
+    public void delete(Long[] ids) {
+        for (long id : ids) {
+            newsDao.delete(id);
         }
     }
 
@@ -55,6 +54,14 @@ public class NewsService implements INewsService {
     @Override
     public int getTotalItem() {
         return  newsDao.count();
+    }
+
+    @Override
+    public NewsModel findOne(long id) {
+        NewsModel newsModel = newsDao.findOne(id);
+        CategoryModel categoryModel = categoryDAO.findOne(newsModel.getCategoryId());
+        newsModel.setCategoryCode(categoryModel.getCode());
+        return newsModel;
     }
 
 }

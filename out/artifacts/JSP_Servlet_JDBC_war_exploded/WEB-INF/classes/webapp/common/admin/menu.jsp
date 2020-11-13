@@ -5,7 +5,7 @@
   Time: 15:54
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <%@include file="/common/taglib.jsp"%>
 <!doctype html>
 
@@ -52,13 +52,16 @@
             <b class="arrow"></b>
             <ul class="submenu">
                 <li>
-                    <a href='<c:url value="/admin-news-list"/>'>
+                    <a href='<c:url value="/admin-news-list?list=lpage=1&maxPageItem=2&sortName='title'&sortBy='desc'"/>'>
                         <i class="menu-icon fa fa-caret-right"></i>
                         DS bài viết
                     </a>
                     <b class="arrow"></b>
                 </li>
             </ul>
+        </li>
+        <li>
+            <a href="#" class="dropdown-toggle" >Hé</a>
         </li>
     </ul>
     <div class="sidebar-toggle sidebar-collapse">

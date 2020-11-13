@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AbstractModel<T> {
-    private long id;
+    private Long id;
     private Timestamp createDate;
     private Timestamp modifiedDate;
     private String createdBy;
     private String modifiedBy;
-    private long[] ids;
+    private Long[] ids;
     private List<T> listResult = new ArrayList<>();
     private Integer page = 1; //hiển thị ở page nào
     private Integer maxPageItem; //tổng số item nhiều nhất trên 1 page
@@ -18,6 +18,15 @@ public class AbstractModel<T> {
     private Integer totalIem;
     private String sortName;
     private String sortBy;
+    private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public String getSortName() {
         return sortName;
@@ -75,19 +84,19 @@ public class AbstractModel<T> {
         this.listResult = listResult;
     }
 
-    public void setIds(long[] ids){
+    public void setIds(Long[] ids){
         this.ids = ids;
     }
 
-    public long[] getIds(){
+    public Long[] getIds(){
         return ids;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

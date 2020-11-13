@@ -6,6 +6,7 @@ import com.jspservletjdbc.model.NewsModel;
 import com.jspservletjdbc.model.UserModel;
 import com.jspservletjdbc.paging.PageRequest;
 import com.jspservletjdbc.paging.Pageble;
+import com.jspservletjdbc.service.ICategoryService;
 import com.jspservletjdbc.service.INewsService;
 import com.jspservletjdbc.service.impl.NewsService;
 import com.jspservletjdbc.sort.Sorter;
@@ -27,19 +28,48 @@ import java.util.List;
 public class NewsController extends HttpServlet {
     @Inject
     private INewsService newsService;
+    @Inject
+    private ICategoryService categoryService;
+
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     * Thực hiện kiểm tra đầu giá trị của request
+     * nếu type là list thì đơn giản trả về list new
+     * nếu type là single thì có thể hành dộng xóa hoặc sửa
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
         NewsModel model = FormUtil.toModel(NewsModel.class,request);
-        Pageble pageble = new PageRequest(model.getPage(),model.getMaxPageItem(),
-                new Sorter(model.getSortName(),model.getSortBy()));
-        model.setListResult(newsService.findAll(pageble));
-        model.setTotalIem(newsService.getTotalItem());
-        model.setTotalPage((int) Math.ceil(model.getTotalIem())/model.getMaxPageItem());
+        String view ="";
+        if(model.getType().equals(SystemConstant.LIST)){
+            Pageble pageble = new PageRequest(model.getPage(),model.getMaxPageItem(),
+                    new Sorter(model.getSortName(),model.getSortBy()));
+            model.setListResult(newsService.findAll(pageble));
+            model.setTotalIem(newsService.getTotalItem());
+            model.setTotalPage((int) Math.ceil(model.getTotalIem())/model.getMaxPageItem());
+            view = "/views/admin/news/list.jsp";
+        }else if (model.getType().equals(SystemConstant.SINGLE)){
+            if(model.getId() != null){
+                model = newsService.findOne(model.getId());
+            }
+            request.setAttribute("categories", categoryService.findAll());
+            view = "/views/admin/news/edit.jsp";
+        }
         request.setAttribute(SystemConstant.MODEL,model);
-        System.out.println(model.getListResult());
-        RequestDispatcher rd = request.getRequestDispatcher("/views/admin/news/list.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher(view);
         rd.forward(request,response);
     }
+
+    /**
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
     }
