@@ -50,7 +50,7 @@ public class HomeController extends HttpServlet {
                     break;
 
                 default:
-                    request.setAttribute("categories", categoryService.findAll());
+                    request.setAttribute("categories", categoryService.findAll()); //trả về model trong đó chưa các  bài viết được trả về trong thuộc tính listresult
                     rd = request.getRequestDispatcher("/views/web/home.jsp");
                     rd.forward(request, response);
                     break;
@@ -58,7 +58,7 @@ public class HomeController extends HttpServlet {
         }
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
-        String action =request.getParameter("action");
+        String action = request.getParameter("action");
         if(action!= null && action.equals("login")){
             UserModel user = FormUtil.toModel(UserModel.class,request);
             user = userService.findUserByNameAndPasswordStatus(user.getUserName(),user.getPassWord(),1);

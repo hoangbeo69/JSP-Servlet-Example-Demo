@@ -5,3 +5,7 @@
 #pagination li{
     display: inline-block;
 }
+#formEdit{
+    font-size: 16px;
+    margin: 2em;
+}

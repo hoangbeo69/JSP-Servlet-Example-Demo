@@ -28,7 +28,7 @@ public class NewsAPI extends HttpServlet {
         req.setCharacterEncoding("UTF-8"); //đinh dạng định dạng dữ liệu truyền vào có thể đọc tiếng việt
         resp.setContentType("application/json");  // set kiểu dữ liệu đầu ra là kiểu json
         NewsModel newsModel = HttpUtil.of(req.getReader()).toModel(NewsModel.class);
-        newsModel.setCreatedBy(((UserModel) SessionUtil.getInstance().getValue(req,"USERNAME")).getUserName());
+//        newsModel.setCreatedBy(((UserModel) SessionUtil.getInstance().getValue(req,"USERMODEL")).getUserName());
         newsModel = newsService.save(newsModel);
         mapper.writeValue(resp.getOutputStream(),newsModel);
     }

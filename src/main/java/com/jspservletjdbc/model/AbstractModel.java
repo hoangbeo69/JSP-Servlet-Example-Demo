@@ -2,6 +2,7 @@ package com.jspservletjdbc.model;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class AbstractModel<T> {
@@ -130,5 +131,25 @@ public class AbstractModel<T> {
 
     public void setModifiedBy(String modifiedBy) {
         this.modifiedBy = modifiedBy;
+    }
+
+    @Override
+    public String toString() {
+        return "AbstractModel{" +
+                "id=" + id +
+                ", createDate=" + createDate +
+                ", modifiedDate=" + modifiedDate +
+                ", createdBy='" + createdBy + '\'' +
+                ", modifiedBy='" + modifiedBy + '\'' +
+                ", ids=" + Arrays.toString(ids) +
+                ", listResult=" + listResult +
+                ", page=" + page +
+                ", maxPageItem=" + maxPageItem +
+                ", totalPage=" + totalPage +
+                ", totalIem=" + totalIem +
+                ", sortName='" + sortName + '\'' +
+                ", sortBy='" + sortBy + '\'' +
+                ", type='" + type + '\'' +
+                '}';
     }
 }

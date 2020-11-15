@@ -19,4 +19,12 @@ public class CategoryModel extends AbstractModel<CategoryModel>{
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "CategoryModel{" +
+                "code='" + code + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

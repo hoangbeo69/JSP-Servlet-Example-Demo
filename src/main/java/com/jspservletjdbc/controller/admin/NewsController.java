@@ -56,7 +56,7 @@ public class NewsController extends HttpServlet {
             if(model.getId() != null){
                 model = newsService.findOne(model.getId());
             }
-            request.setAttribute("categories", categoryService.findAll());
+            request.setAttribute("categories", categoryService.findAll()); //trả về thẳng array list các category
             view = "/views/admin/news/edit.jsp";
         }
         request.setAttribute(SystemConstant.MODEL,model);
