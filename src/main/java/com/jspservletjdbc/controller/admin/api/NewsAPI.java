@@ -9,6 +9,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -54,6 +55,5 @@ public class NewsAPI extends HttpServlet {
         deleteNews.setModifiedBy(((UserModel)(SessionUtil.getInstance()).getValue(req,"USERMODEL")).getUserName());
         newsService.delete(deleteNews.getIds());
         mapper.writeValue(resp.getOutputStream(),"{}");
-
     }
 }

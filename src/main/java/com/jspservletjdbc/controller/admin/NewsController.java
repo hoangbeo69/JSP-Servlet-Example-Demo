@@ -2,6 +2,7 @@ package com.jspservletjdbc.controller.admin;
 
 import com.jspservletjdbc.constant.SystemConstant;
 import com.jspservletjdbc.model.AbstractModel;
+import com.jspservletjdbc.model.MessageModel;
 import com.jspservletjdbc.model.NewsModel;
 import com.jspservletjdbc.model.UserModel;
 import com.jspservletjdbc.paging.PageRequest;
@@ -11,6 +12,7 @@ import com.jspservletjdbc.service.INewsService;
 import com.jspservletjdbc.service.impl.NewsService;
 import com.jspservletjdbc.sort.Sorter;
 import com.jspservletjdbc.utils.FormUtil;
+import com.jspservletjdbc.utils.MessageUtil;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -30,7 +32,6 @@ public class NewsController extends HttpServlet {
     private INewsService newsService;
     @Inject
     private ICategoryService categoryService;
-
     /**
      *
      * @param request
@@ -44,6 +45,7 @@ public class NewsController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
         NewsModel model = FormUtil.toModel(NewsModel.class,request);
+        MessageUtil.showMessage(request);
         String view ="";
         if(model.getType().equals(SystemConstant.LIST)){
             Pageble pageble = new PageRequest(model.getPage(),model.getMaxPageItem(),

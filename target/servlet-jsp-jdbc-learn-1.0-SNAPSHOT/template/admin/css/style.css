@@ -1,0 +1,11 @@
+#pagination{
+    display: inline-block;
+    margin-bottom: 1.75em;
+}
+#pagination li{
+    display: inline-block;
+}
+#formEdit{
+    font-size: 16px;
+    margin: 2em;
+}

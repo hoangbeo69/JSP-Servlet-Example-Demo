@@ -20,7 +20,7 @@
         <form id="formNews" >
             <div class="form-group">
                 <label for="categoryId">Thể Loại</label>
-                <select class="form-control" id="categoryId" name="categoryId">
+                <select class="form-control" id="categoryId" name="categoryId" required="">
                     <option value="none">Chọn loại bài viết</option>
                     <c:forEach var="category" items="${categories}">
                         <option value="${category.id}" <c:if test="${category.id == model.categoryId}">selected</c:if> >
@@ -31,7 +31,7 @@
             </div>
             <div class="form-group">
                 <label for="title">Tiêu đề</label>
-                <input type="text" class="form-control" name="title" id="title" placeholder="" value="${model.title}">
+                <input type="text" required="" class="form-control" name="title" id="title" placeholder="" value="${model.title}">
             </div>
             <div class="form-group">
                 <label for="thumbnail">Thumbnail</label>
@@ -39,11 +39,11 @@
             </div>
             <div class="form-group">
                 <label for="shortDescription">Mô tả ngắn</label>
-                <input type="text" class="form-control"  name="shortDescription" id="shortDescription" placeholder="" value="${model.shortDescription}">
+                <input type="text" required="" class="form-control"  name="shortDescription" id="shortDescription" placeholder="" value="${model.shortDescription}">
             </div>
             <div class="form-group">
                 <label for="content">Nội dung</label>
-                <input type="text" class="form-control" name="content" id="content" placeholder="" value="${model.content}">
+                <input type="text" required="" class="form-control" name="content" id="content" placeholder="" value="${model.content}">
             </div>
             <div class="form-group">
                 <c:if test="${not empty model.id}">
@@ -67,7 +67,7 @@
             data[""+v.name+""]  = v.value;
         });
         var id = $('#id').val();
-        if(id ==""){
+        if(id == ""){
             addNews(data);
         }else {
             updateNews(data);
@@ -80,28 +80,28 @@
             contentType: 'application/json',  //kiểu dữ liệu gửi lên server
             dataType: 'json',  //chấp nhận kiểu dữ liệu trả về là json
             data: JSON.stringify(data),  //hàm convert từ object sang JSONstring
-            success(){
-                console.log("success");
+            success:()=>{
+                window.location.href = "${Newsurl}?type=list&page=1&maxPageItem=2&sortName='title'&sortBy='desc'&message=insert_success&alert=success";
             },
-            error(){
-                console.log("fail");
+            error:()=>{
+                window.location.href = "${Newsurl}?type=list&maxPageItem=2&page=1&sortName='title'&sortBy='desc'&message=error_system&alert=danger";
             }
         });
     }
-    function updateNews(data){
+        function updateNews(data){
         $.ajax({
             url:'${APIurl}',
             type: 'PUT',
             contentType: 'application/json',
             dataType: 'json',
             data: JSON.stringify(data),
-            success(){
-                console.log("success");
+            success:()=>{
+                window.location.href = "${Newsurl}?type=list&page=1&maxPageItem=2&sortName='title'&sortBy='desc'&message=update_success&alert=success";
             },
-            error(){
-                console.log("fail");
+            error:()=>{
+                window.location.href = "${Newsurl}?type=list&page=1&maxPageItem=2&sortName='title'&sortBy='desc'&message=error_system&alert=danger";
             }
-        });
+        })
     }
 </script>
 </body>

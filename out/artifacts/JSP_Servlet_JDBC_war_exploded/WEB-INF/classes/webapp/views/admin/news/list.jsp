@@ -31,11 +31,16 @@
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
+                        <c:if test="${not empty messageResponse.message}">
+                            <div class="alert alert-${messageResponse.alert}" role="alert">
+                                ${messageResponse.message}
+                            </div>
+                        </c:if>
                         <div class="align-right">
                             <a class="btn btn-success" id="btnAddNews" title="Thêm Mới" data-toggle="tooltip" href="${Newsurl}?type=single">
                                 <i class="fa fa-plus" aria-hidden="true"></i>
                             </a>
-                            <button class="btn btn-warning" id="btnDeleteNews" title="Xóa" data-toggle="tooltip" >
+                            <button class="btn btn-danger" id="btnDeleteNews" title="Xóa" data-toggle="tooltip" type="button">
                                 <i class="fa fa-trash" aria-hidden="true"></i>
                             </button>
                         </div>
@@ -43,6 +48,12 @@
                             <table class="table">
                                 <thead>
                                 <tr>
+                                    <th>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" id="checkedAll"/>
+                                            <label class="form-check-label" for="checkedAll"><b>Tất Cả</b></label>
+                                        </div>
+                                    </th>
                                     <th>Tên Bài Viết</th>
                                     <th>Mô Tả Ngắn</th>
                                     <th>Button</th>
@@ -51,6 +62,11 @@
                                 <tbody>
                                 <c:forEach var="item" items="${model.listResult}">
                                     <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="checked_${item.id}" value="${item.id}"/>
+                                            </div>
+                                        </td>
                                         <td>${item.title}</td>
                                         <td>${item.shortDescription}</td>
                                         <td>
@@ -102,9 +118,30 @@
             }
         }
     });
-    $("#btnDeleteNews").click(function (){
-
+    $('#btnDeleteNews').click(function (){
+        var data = {};
+        let ids = $('tbody input[type=checkbox]:checked').map(function (){
+            return parseInt($(this).val());
+        }).get();
+        data['ids'] = ids
+        deleteNews(data);
     });
+    function deleteNews(data){
+        $.ajax({
+            url:'${APIurl}',
+            type: 'DELETE',
+            contentType: 'application/json',
+            dataType: 'json',
+            data: JSON.stringify(data),
+            success:()=>{
+                window.location.href = "${Newsurl}?type=list&page=1&maxPageItem=2&sortName='title'&sortBy='desc'&message=delete_success&alert=success";
+            },
+            error:()=>{
+                window.location.href = "${Newsurl}?type=list&page=1&maxPageItem=2&sortName='title'&sortBy='desc'&message=error_system&alert=danger";
+
+            }
+        });
+    }
     /* jQuery Pagination Example (twbs-pagination) */
 </script>
 </body>
