@@ -13,7 +13,6 @@
 <html>
 <head>
     <title>Danh Sách Bài Viết</title>
-    <link rel="stylesheet/css">
 </head>
 
 <body>

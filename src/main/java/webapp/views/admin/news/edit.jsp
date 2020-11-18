@@ -43,7 +43,8 @@
             </div>
             <div class="form-group">
                 <label for="content">Nội dung</label>
-                <input type="text" required="" class="form-control" name="content" id="content" placeholder="" value="${model.content}">
+<%--                <textarea class="form-control" id="content" name="content" style="height: 10em">${model.content}</textarea>--%>
+                <textarea class="form-control" id="content" name="content" style="height: 10em">Alo lololololo</textarea>
             </div>
             <div class="form-group">
                 <c:if test="${not empty model.id}">
@@ -58,6 +59,16 @@
     </div>
 </div>
 <script>
+    // CKediter dùng để soạn thảo bài viết template la Document
+    var content ;
+    ClassicEditor
+        .create( document.querySelector( '#content' ))
+        .then( newEditor =>{  // lấy dữ liệu từ tất cả các dòng của textarea
+            content = newEditor;
+        })
+        .catch( error => {
+            console.error( error );
+        } );
     $('#btnUpdateOrAddNews').click(function (e){
         e.preventDefault(); //sử dụng để tránh việc submit nhầm url đang hiện hành
         var  data ={};
@@ -66,6 +77,7 @@
         $.each(formData,function (i,v){
             data[""+v.name+""]  = v.value;
         });
+        data["content"] = content.getData(); //lấy dữ liệu từ textare
         var id = $('#id').val();
         if(id == ""){
             addNews(data);
