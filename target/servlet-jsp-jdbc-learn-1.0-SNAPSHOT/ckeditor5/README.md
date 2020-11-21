@@ -1,5 +1,5 @@
-CKEditor 5 decoupled document editor build v23.1.0
-==================================================
+CKEditor 5 classic editor build v23.1.0
+=======================================
 
 In order to start using CKEditor 5 Builds, configure or customize them, please visit http://docs.ckeditor.com/ckeditor5/latest/builds/index.html
 

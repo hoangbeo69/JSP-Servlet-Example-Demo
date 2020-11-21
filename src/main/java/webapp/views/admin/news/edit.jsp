@@ -17,7 +17,7 @@
 <body>
 <div class="container">
     <div class="col-sm-12 margin-15" >
-        <form id="formNews" >
+        <form id="formNews">
             <div class="form-group">
                 <label for="categoryId">Thể Loại</label>
                 <select class="form-control" id="categoryId" name="categoryId" required="">
@@ -43,8 +43,7 @@
             </div>
             <div class="form-group">
                 <label for="content">Nội dung</label>
-<%--                <textarea class="form-control" id="content" name="content" style="height: 10em">${model.content}</textarea>--%>
-                <textarea class="form-control" id="content" name="content" style="height: 10em">Alo lololololo</textarea>
+                <textarea class="form-control" id="content" name="content" style="height: 10em">${model.content}</textarea>
             </div>
             <div class="form-group">
                 <c:if test="${not empty model.id}">
@@ -69,6 +68,7 @@
         .catch( error => {
             console.error( error );
         } );
+    //kiểm tra là thực hiện edit hay thêm mới
     $('#btnUpdateOrAddNews').click(function (e){
         e.preventDefault(); //sử dụng để tránh việc submit nhầm url đang hiện hành
         var  data ={};
@@ -100,7 +100,7 @@
             }
         });
     }
-        function updateNews(data){
+    function updateNews(data){
         $.ajax({
             url:'${APIurl}',
             type: 'PUT',

@@ -17,7 +17,7 @@
 <body>
 <div class="container">
     <div class="col-sm-12 margin-15" >
-        <form id="formNews" >
+        <form id="formNews" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="categoryId">Thể Loại</label>
                 <select class="form-control" id="categoryId" name="categoryId" required="">
@@ -34,6 +34,10 @@
                 <input type="text" required="" class="form-control" name="title" id="title" placeholder="" value="${model.title}">
             </div>
             <div class="form-group">
+                <label for="imagetest">Ảnh</label>
+                <input type="file" class="form-control-file" id="imagetest" name="imagetest">
+            </div>
+            <div class="form-group">
                 <label for="thumbnail">Thumbnail</label>
                 <input type="text" class="form-control" name="thumbnail" id="thumbnail" placeholder="">
             </div>
@@ -44,7 +48,7 @@
             <div class="form-group">
                 <label for="content">Nội dung</label>
 <%--                <textarea class="form-control" id="content" name="content" style="height: 10em">${model.content}</textarea>--%>
-                <textarea class="form-control" id="content" name="content" style="height: 10em">Alo lololololo</textarea>
+                <textarea class="form-control" id="content" name="content" style="height: 10em"></textarea>
             </div>
             <div class="form-group">
                 <c:if test="${not empty model.id}">
@@ -63,7 +67,7 @@
     var content ;
     ClassicEditor
         .create( document.querySelector( '#content' ))
-        .then( newEditor =>{  //lấy dữ liệu từ textare
+        .then( newEditor =>{  // lấy dữ liệu từ tất cả các dòng của textarea
             content = newEditor;
         })
         .catch( error => {

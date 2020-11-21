@@ -8,13 +8,13 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 	<link type="text/css" href="sample/css/sample.css" rel="stylesheet" media="screen" />
-	<title>CKEditor 5 – document editor build sample</title>
+	<title>CKEditor 5 – classic editor build sample</title>
 </head>
 <body>
 
 <header>
 	<div class="centered">
-		<h1><a href="https://ckeditor.com/ckeditor-5"><img src="sample/img/logo.svg" alt="CKEditor 5 rich text editor" /></a></h1>
+		<h1><a href="https://ckeditor.com/ckeditor-5"><img src="sample/img/logo.svg" alt="WYSIWYG editor - CKEditor 5" /></a></h1>
 
 		<input type="checkbox" id="menu-toggle" />
 		<label for="menu-toggle"></label>
@@ -39,27 +39,22 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 		</div>
 	</div>
 	<div class="centered">
-		<div class="document-editor">
-			<div class="toolbar-container"></div>
-			<div class="content-container">
-				<div id="editor">
-					<h2>The three greatest things you learn from traveling</h2>
-		
-					<p>Like all the great things on earth traveling teaches us by example. Here are some of the most precious lessons I’ve learned over the years of traveling.</p>
-		
-					<h3>Appreciation of diversity</h3>
-		
-					<p>Getting used to an entirely different culture can be challenging. While it’s also nice to learn about cultures online or from books, nothing comes close to experiencing <a href="https://en.wikipedia.org/wiki/Cultural_diversity">cultural diversity</a> in person. You learn to appreciate each and every single one of the differences while you become more culturally fluid.</p>
-		
-					<figure class="image image-style-align-right"><img src="sample/img/umbrellas.jpg" alt="Three Monks walking on ancient temple.">
-						<figcaption>Leaving your comfort zone might lead you to such beautiful sceneries like this one.</figcaption>
-					</figure>
-		
-					<h3>Confidence</h3>
-		
-					<p>Going to a new place can be quite terrifying. While change and uncertainty makes us scared, traveling teaches us how ridiculous it is to be afraid of something before it happens. The moment you face your fear and see there was nothing to be afraid of, is the moment you discover bliss.</p>
-				</div>
-			</div>
+		<div id="editor">
+			<h2>The three greatest things you learn from traveling</h2>
+
+			<p>Like all the great things on earth traveling teaches us by example. Here are some of the most precious lessons I’ve learned over the years of traveling.</p>
+
+			<h3>Appreciation of diversity</h3>
+
+			<p>Getting used to an entirely different culture can be challenging. While it’s also nice to learn about cultures online or from books, nothing comes close to experiencing <a href="https://en.wikipedia.org/wiki/Cultural_diversity">cultural diversity</a> in person. You learn to appreciate each and every single one of the differences while you become more culturally fluid.</p>
+
+			<figure class="image image-style-side"><img src="sample/img/umbrellas.jpg" alt="Three Monks walking on ancient temple.">
+				<figcaption>Leaving your comfort zone might lead you to such beautiful sceneries like this one.</figcaption>
+			</figure>
+
+			<h3>Confidence</h3>
+
+			<p>Going to a new place can be quite terrifying. While change and uncertainty makes us scared, traveling teaches us how ridiculous it is to be afraid of something before it happens. The moment you face your fear and see there was nothing to be afraid of, is the moment you discover bliss.</p>
 		</div>
 
 		<div id="references">
@@ -111,15 +106,11 @@ For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
 <script src="ckeditor.js"></script>
 
 <script>
-	DecoupledEditor
+	ClassicEditor
 		.create( document.querySelector( '#editor' ), {
 			// toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
 		} )
 		.then( editor => {
-			const toolbarContainer = document.querySelector( 'main .toolbar-container' );
-
-			toolbarContainer.prepend( editor.ui.view.toolbar.element );
-
 			window.editor = editor;
 		} )
 		.catch( err => {
