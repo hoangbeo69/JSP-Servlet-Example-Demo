@@ -7,4 +7,5 @@ public class SystemConstant {
     public static final String LIST = "list";
     public static final String SINGLE = "single";
     public static final String MESSAGE = "messageResponse";
+    public static final String PATHFILESAVE = "C:\\Users\\Admin\\IdeaProjects\\JSP-Servlet-Example-Demo\\src\\main\\java\\webapp\\images\\test\\";
 }
