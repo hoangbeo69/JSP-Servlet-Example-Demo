@@ -17,7 +17,7 @@
 <body>
 <div class="container">
     <div class="col-sm-12 margin-15" >
-        <form id="formNews" enctype="multipart/form-data">
+        <form id="formNews">
             <div class="form-group">
                 <label for="categoryId">Thể Loại</label>
                 <select class="form-control" id="categoryId" name="categoryId" required="">
@@ -34,10 +34,6 @@
                 <input type="text" required="" class="form-control" name="title" id="title" placeholder="" value="${model.title}">
             </div>
             <div class="form-group">
-                <label for="imagetest">Ảnh</label>
-                <input type="file" class="form-control-file" id="imagetest" name="imagetest">
-            </div>
-            <div class="form-group">
                 <label for="thumbnail">Thumbnail</label>
                 <input type="text" class="form-control" name="thumbnail" id="thumbnail" placeholder="">
             </div>
@@ -47,8 +43,7 @@
             </div>
             <div class="form-group">
                 <label for="content">Nội dung</label>
-<%--                <textarea class="form-control" id="content" name="content" style="height: 10em">${model.content}</textarea>--%>
-                <textarea class="form-control" id="content" name="content" style="height: 10em"></textarea>
+                <textarea class="form-control" id="content" name="content" style="height: 10em">${model.content}</textarea>
             </div>
             <div class="form-group">
                 <c:if test="${not empty model.id}">
@@ -73,6 +68,7 @@
         .catch( error => {
             console.error( error );
         } );
+    //kiểm tra là thực hiện edit hay thêm mới
     $('#btnUpdateOrAddNews').click(function (e){
         e.preventDefault(); //sử dụng để tránh việc submit nhầm url đang hiện hành
         var  data ={};
@@ -104,7 +100,7 @@
             }
         });
     }
-        function updateNews(data){
+    function updateNews(data){
         $.ajax({
             url:'${APIurl}',
             type: 'PUT',

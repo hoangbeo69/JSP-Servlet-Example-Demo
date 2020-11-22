@@ -9,6 +9,7 @@
 <%@include file="/common/taglib.jsp"%>
 <c:url var="APIurl" value="/api-admin-news"/>
 <c:url var="Newsurl" value="/admin-news-list"/>
+<c:url var="Uploadfile" value="/admin-news-list/uploadfile"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,6 +37,9 @@
                             </div>
                         </c:if>
                         <div class="align-right">
+                            <a class="btn btn-warning" id="btnUploadFile" title="UploadFile" data-toggle="tooltip" href="${Uploadfile}">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </a>
                             <a class="btn btn-success" id="btnAddNews" title="Thêm Mới" data-toggle="tooltip" href="${Newsurl}?type=single">
                                 <i class="fa fa-plus" aria-hidden="true"></i>
                             </a>
