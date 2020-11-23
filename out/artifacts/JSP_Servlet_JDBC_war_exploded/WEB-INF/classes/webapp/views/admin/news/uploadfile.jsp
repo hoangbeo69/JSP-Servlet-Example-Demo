@@ -17,7 +17,8 @@
 <div class="container">
     <div class="col-sm-12 margin-15" >
         <div class="col-xs-12">
-            <form enctype="multipart/form-data" id="formUpload">
+            <img id="imagePreview" src="https://placeholder.pics/svg/300x300" class="img-thumbnail rounded float-left"/>
+            <form  id="formUpload">
                 <div class="form-group">
                     <label for="file">Upload Hình Ảnh</label>
                     <input type="file" class="form-control-file" id="file" name="file">
@@ -31,6 +32,7 @@
 </div>
 <script>
     //Hàm xử lý uploadfile
+    // https://stackoverflow.com/questions/5392344/sending-multipart-formdata-with-jquery-ajax
     $('#btnUploadFile').click(function(e){
         console.log("he");
         e.preventDefault();
@@ -53,7 +55,24 @@
             }
         });
     });
-
+    //Hiển thị image preview
+    // https://stackoverflow.com/questions/5392344/sending-multipart-formdata-with-jquery-ajax
+    // https://codepen.io/mobifreaks/pen/LIbca
+    $('#file').change(function (){
+        var input = this;
+        console.log("he");
+        if(input.files &&input.files[0]){
+            var reader = new FileReader();
+            console.log(reader);
+            reader.onload  = (e)=>{
+                $('#imagePreview').attr('src',e.target.result)
+                console.log(e.target);
+                console.log(e.target.result);
+            };
+            console.log(input.files[0]);
+            reader.readAsDataURL(input.files[0]);// convert to base64 string
+        }
+    });
 </script>
 </body>
 </html>
